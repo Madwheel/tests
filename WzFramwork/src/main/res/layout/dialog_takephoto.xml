@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_takephoto_camera"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="拍   照"
+        android:textColor="#000000"
+        android:textSize="16sp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#EBEBEB"/>
+
+    <TextView
+        android:id="@+id/dialog_takephoto_album"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:text="从相册选取"
+        android:textColor="#000000"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/dialog_takephoto_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#e1e1e1"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="取   消"
+        android:textColor="#000000"
+        android:textSize="16sp"/>
+
+</LinearLayout>

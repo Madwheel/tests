@@ -1,0 +1,116 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.iwz.wzframwork">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <application>
+        <!-- 小米 -->
+        <service
+            android:name="com.xiaomi.push.service.XMPushService"
+            android:enabled="true"
+            android:process=":pushservice" />
+        <service
+            android:name="com.xiaomi.push.service.XMJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:process=":pushservice" /> <!-- 注：此service必须在3.0.1版本以后（包括3.0.1版本）加入 -->
+        <service
+            android:name="com.xiaomi.mipush.sdk.PushMessageHandler"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.xiaomi.mipush.sdk.MessageHandleService"
+            android:enabled="true" /> <!-- 注：此service必须在2.2.5版本以后（包括2.2.5版本）加入 -->
+        <receiver
+            android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.xiaomi.push.service.receivers.PingReceiver"
+            android:exported="false"
+            android:process=":pushservice">
+            <intent-filter>
+                <action android:name="com.xiaomi.push.PING_TIMER" />
+            </intent-filter>
+        </receiver>
+        <!--        <receiver-->
+        <!--            android:name="com.iwz.WzFramwork.partern.xiaomi.MiUiMessageReceiver"-->
+        <!--            android:exported="true">-->
+
+        <!--            &lt;!&ndash; 这里com.xiaomi.mipushdemo.DemoMessageRreceiver改成app中定义的完整类名 &ndash;&gt;-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />-->
+        <!--            </intent-filter>-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="com.xiaomi.mipush.MESSAGE_ARRIVED" />-->
+        <!--            </intent-filter>-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="com.xiaomi.mipush.ERROR" />-->
+        <!--            </intent-filter>-->
+        <!--        </receiver>-->
+        <!-- 小米 -->
+        <!--        &lt;!&ndash; 全民支付 &ndash;&gt;-->
+        <!--        <meta-data-->
+        <!--            android:name="PPPaySDK"-->
+        <!--            android:value="true" />-->
+        <!--        <meta-data-->
+        <!--            android:name="CurrentEnvironment"-->
+        <!--            android:value="PROD" /> &lt;!&ndash; 需添加云闪付支付方式时，还需添加如下声明： &ndash;&gt;-->
+        <!--        <uses-library-->
+        <!--            android:name="org.simalliance.openmobileapi"-->
+        <!--            android:required="false" />-->
+
+        <!--        <activity-->
+        <!--            android:name="com.unionpay.uppay.PayActivity"-->
+        <!--            android:configChanges="orientation|keyboardHidden"-->
+        <!--            android:excludeFromRecents="true"-->
+        <!--            android:label="@string/app_name"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            android:windowSoftInputMode="adjustResize" />-->
+        <!--        <activity-->
+        <!--            android:name="com.unionpay.UPPayWapActivity"-->
+        <!--            android:configChanges="orientation|keyboardHidden"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            android:windowSoftInputMode="adjustResize" />-->
+        <!-- 全民支付 -->
+        <!--        <activity-->
+        <!--            android:name="com.alipay.sdk.app.H5PayActivity"-->
+        <!--            android:configChanges="orientation|keyboardHidden|navigation|screenSize"-->
+        <!--            android:exported="false"-->
+        <!--            android:screenOrientation="behind"-->
+        <!--            android:windowSoftInputMode="adjustResize|stateHidden" />-->
+        <!--        <activity-->
+        <!--            android:name="com.alipay.sdk.app.H5AuthActivity"-->
+        <!--            android:configChanges="orientation|keyboardHidden|navigation"-->
+        <!--            android:exported="false"-->
+        <!--            android:screenOrientation="behind"-->
+        <!--            android:windowSoftInputMode="adjustResize|stateHidden" />-->
+        <meta-data
+            android:name="PPPaySDK"
+            android:value="true" />
+        <meta-data
+            android:name="CurrentEnvironment"
+            android:value="PROD" />
+
+        <uses-library
+            android:name="org.simalliance.openmobileapi"
+            android:required="false" />
+
+        <activity
+            android:name="com.unionpay.uppay.PayActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.unionpay.UPPayWapActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+</manifest>
